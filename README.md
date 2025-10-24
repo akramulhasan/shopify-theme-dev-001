@@ -1,12 +1,9 @@
-# :wave: Say hi to Elizabeth :wave:
+# :wave: Say hi to Akramul :wave:
 
 [![Generic badge](https://img.shields.io/badge/course%20available%3F-yes-green.svg)](https://shields.io/)
 
-This project is created and intended to be used for the [Shopify Theme Development – Online Store 2.0 + TailwindCSS course](https://weeklyhow.com/courses/)
+This project is created to learn and practice Shopify Theme Development
 
-
-[Get the course!](https://weeklyhow.com/) | [Lessons covered](#lessons-covered) |
-[How to use](#how-to-use) | [Not a student?](#not-a-student)
 
 ## Lessons covered
 
