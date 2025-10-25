@@ -1,0 +1,30 @@
+<div class="max-w-md">
+    <div class="text-5xl font-bold my-4">
+        {{ section.settings.title }}
+    </div>
+    <div class="my-4 md:text-xl leadning-normal">
+        {{ section.settings.subtext }}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Template 404",
+    "tag": "section",
+    "class": "flex items-center justify-center text-center py-20 flex-col h-screen",
+    "settings": [
+        {
+            "type" : "text",
+            "id" : "title",
+            "label" : "Title",
+            "default" : "Page Not Found"
+        },
+        {
+            "type": "richtext",
+            "id": "subtext",
+            "label": "Subtext",
+            "default": "<p>The page you are looking for doesn't exist or has been moved.</p>"
+        }
+    ]
+}
+{% endschema %}
