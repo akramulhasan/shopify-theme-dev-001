@@ -145,22 +145,30 @@
   {% endif %}
 
 
-<script>
-  "@context" : "https://schema.org",
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
   "@type" : "BlogPosting",
-  "headline" : "{{ article.title | escape }}",
+  "headline" : {{ article.title | json }},
   "author": {
     "@type": "Person",
-    "name": "{{ article.author | escape }}"
+    "name": {{ article.author | json }}
   },
-  "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
-  {% if article.image != blank %}
-    "image": "{{ article.image | img_url: 'large' |  prepend: 'https:' |  json }}",
+  "datePublished": {{ article.published_at | date: '%Y-%m-%d' | json}},
+  {% if article.image%}
+    "image": [
+      {{ article.image | img_url: 'large' |  prepend: 'https:' |  json }}
+    ],
   {% endif %}
-  "articleBody": "{{ article.content | strip_html | escape }}"
-  {% if article. != blank %}
-    "description": "{{ article.excerpt | strip_html | escape }}",
+  "articleBody": {{ article.content | strip_html | json }},
+  {% if article.excerpt != blank %}
+    "description": {{ article.excerpt | strip_html | json }},
   {% endif %}
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ shop.name | json }}
+  }
+}
 </script>
 
 
