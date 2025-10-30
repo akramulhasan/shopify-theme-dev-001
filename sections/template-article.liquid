@@ -1,4 +1,4 @@
-<article class="py-8 px-4 md:px-8 lg:px-16">
+<article class="py-8 px-4 md:px-8 lg:px-16" itemscope itemtype="http://schema.org/BlogPosting">
   {% for block in section.blocks %}
 
   {% case block.type %}
@@ -6,16 +6,16 @@
       <div class="flex items-center justify-center">
         <div class="max-w-7xl text-center">
           <a href="{{ blog.url }}" class="text-base uppercase text-gray-500 hover:text-gray-900 font-bold">{{ blog.title }}</a>
-          <h1 class="text-4xl md:text-6xl font-medium">
+          <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline">
             {{ article.title }}
           </h1>
         </div>
       </div>
     {% when 'article_author' %}
     <div class="flex items-center justify-center mt-4">
-      <div class="max-w-7xl text-center">
+      <div class="max-w-7xl text-center" itemscope itemtype="http://schema.org/Person">
             {% if section.settings.show_author %}
-              <small>{{ article.author }}</small>
+              <small itemprop="author">{{ article.author }}</small>
             {% endif %}
       </div>
     </div>
@@ -24,19 +24,19 @@
         <div class="max-w-7xl text-center">
           {% if section.settings.show_date %}
             
-            <time datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
+            <time itemprop="datePublished dateCreated" datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at |  date: '%Y-%m-%d' }}</time>
           {% endif %}
         </div>
       </div>
     {% when 'article_image' %}
-      <div class="max-w-7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden">
+      <div itemprop="image" class="max-w-7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden">
             {% if section.settings.show_image %}
               
               <img class="w-full h-80 md:h-90 object-cover object-center" src="{{ article.image |  img_url: 'large' }}" alt="{{ article.image.alt | escape }}">
             {% endif %}
       </div>
     {% when 'article_content' %}
-      <div class="prose lg:prose-lg max-w-7xl mx-2 md:mx-auto mt-8">
+      <div itemprop="articleBody" class="prose lg:prose-lg max-w-7xl mx-2 md:mx-auto mt-8">
         {{ article.content }}
       </div>
       
@@ -143,6 +143,25 @@
   {% else %}
     
   {% endif %}
+
+
+<script>
+  "@context" : "https://schema.org",
+  "@type" : "BlogPosting",
+  "headline" : "{{ article.title | escape }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ article.author | escape }}"
+  },
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+  {% if article.image != blank %}
+    "image": "{{ article.image | img_url: 'large' |  prepend: 'https:' |  json }}",
+  {% endif %}
+  "articleBody": "{{ article.content | strip_html | escape }}"
+  {% if article. != blank %}
+    "description": "{{ article.excerpt | strip_html | escape }}",
+  {% endif %}
+</script>
 
 
 {% schema %}
