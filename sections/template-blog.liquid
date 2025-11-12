@@ -10,14 +10,14 @@
                     <div class="w-full py-6 px-3">
                         <div class="bg-white shadow-xl rounded-lg overflow-hidden">
                             {% if article.image != blank%}
-                                <img class="w-full" src="{{ article.image |  img_url: 'medium' }}" alt="{{ article.image.alt | escape }}">
+                                <img class="w-full max-h-50" src="{{ article.image |  img_url: 'medium' }}" alt="{{ article.image.alt | escape }}">
                 
                                 {% else %}
                                     {{ 'image' | placeholder_svg_tag: 'w-full h-60 object-cover bg-gray-100' }}
                             {% endif %}
                 
                             <div class="p-4">
-                                <h1>{{ article.title }}</h1>
+                                <h1 class="text-xl font-bold mb-4 sm:min-h-14">{{ article.title }}</h1>
                     
                                 {% if article.excerpt.size > 1 %}
                                     <p>{{ article.excerpt |  strip_html |  truncatewords: 15 }}</p>
@@ -31,7 +31,16 @@
                 {% endfor %}
             </div>
         </div>
-
+        <div class="max-w-6xl mx-auto">
+          {%  render 'pagination', paginate:paginate, paginateStyle:section.settings.paginate_style %}
+        </div>
+        {% comment %} <div>
+            {% if section.settings.paginate_style == 'page_count' %}
+                page count style 
+                {% else %}
+                default style
+            {% endif %}
+        </div> {% endcomment %}
     {% endpaginate %}
 </div>
 
@@ -53,6 +62,24 @@
             "max" : 10,
             "step" : 1,
             "default" : 3
+        },
+        {
+            "type": "radio",
+            "id": "paginate_style",
+            "label": "Pagination Style",
+            "default": "default",
+            "options": [    
+                {
+                    "value": "default",
+                    "label": "Default Pagination"
+                },
+                {
+                    "value": "page_count",
+                    "label": "Page Count Pagination"
+                }
+
+            ]
+
         }
         ]
 }
