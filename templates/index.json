@@ -3,8 +3,8 @@
         "featured-collection": {
             "type": "featured-collection",
             "settings": {
-                "featured_collection": "all",
-                "title": "FeaturedCollectionFromJSON"
+                "title": "FeaturedCollectionFromJSON",
+                "featured_collection": "all"
             }
         }
     },
