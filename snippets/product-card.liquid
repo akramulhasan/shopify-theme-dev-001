@@ -2,8 +2,9 @@
     <div class="border bg-white shadow-lg rounded-lg overflow-hidden">
         <a href="{{ product.url }}">
             {% if product.featured_image %}
-                
-                <img class="w-full h-48 object-cover" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+                <div class="overflow-hidden">
+                    <img class="w-full h-48 object-cover transition-transform duration-800 ease-in-out hover:scale-110" src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+                </div>
     
                 {% else %}
             
