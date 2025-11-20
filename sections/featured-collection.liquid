@@ -2,15 +2,16 @@
     <h1 class="text-center text-3xl">{{ section.settings.title }}</h1>
 
     <div class="max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {% for product in section.settings.featured_collection.products limit:section.settings.products_to_show %}
-           {% render 'product-card', product:product %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for product in section.settings.featured_collection.products limit:section.settings.products_to_show %}
+            {% render 'product-card', product:product %}
 
-           {% else %}
-            {% for item in (1..4) %}
-                {% render 'product-card-placeholder' %}
+            {% else %}
+                {% for item in (1..4) %}
+                    {% render 'product-card-placeholder' %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
+        </div>
     </div>
 </div>
 
