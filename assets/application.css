@@ -250,6 +250,9 @@
   .mx-2 {
     margin-inline: calc(var(--spacing) * 2);
   }
+  .mx-4 {
+    margin-inline: calc(var(--spacing) * 4);
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -371,6 +374,9 @@
   }
   .h-80 {
     height: calc(var(--spacing) * 80);
+  }
+  .h-94 {
+    height: calc(var(--spacing) * 94);
   }
   .h-100 {
     height: calc(var(--spacing) * 100);
@@ -540,6 +546,9 @@
   .rounded {
     border-radius: 0.25rem;
   }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -583,6 +592,9 @@
   .bg-red-100 {
     background-color: var(--color-red-100);
   }
+  .bg-red-500 {
+    background-color: var(--color-red-500);
+  }
   .bg-white {
     background-color: var(--color-white);
   }
@@ -624,6 +636,9 @@
   }
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -746,6 +761,9 @@
   }
   .uppercase {
     text-transform: uppercase;
+  }
+  .line-through {
+    text-decoration-line: line-through;
   }
   .underline {
     text-decoration-line: underline;
@@ -1032,6 +1050,17 @@
     @media (width >= 64rem) {
       padding-inline: calc(var(--spacing) * 16);
     }
+  }
+}
+@layer utilities {
+  .h-94 {
+    height: 22rem;
+  }
+}
+@layer utilities {
+  .my-class {
+    color: beige;
+    background-color: red;
   }
 }
 @property --tw-rotate-x {

@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@layer utilities {
+    .h-94 {
+        height: 22rem;
+    }
+}
+
+@layer utilities {
+    .my-class {
+        color: beige;
+        background-color: red;
+    }
+}
