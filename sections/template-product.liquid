@@ -67,7 +67,7 @@
 
                         <div class="my-3">
                             {% unless product.has_only_default_variant %}
-                                <div data-url="{{ product.url }}" data-section="{{ section.id }}">
+                                <variant-selector data-url="{{ product.url }}" data-section="{{ section.id }}">
                                     {% for option in product.options_with_values %}
                                         <label for="Option-{{section.id}}-{{forloop.index}}">
                                             {{ option.name }}
@@ -86,7 +86,7 @@
                                             {% endfor %}
                                         </select>
                                     {% endfor %}
-                                </div>
+                                </variant-selector>
                             {% endunless %}
                         </div>
 
@@ -128,6 +128,29 @@
         </div>
     </div>
 </div>
+
+<script>
+    class VariantSelector extends HTMLElement {
+         constructor(){
+            super();
+            this.addEventListener("change", this.onVariantChange);
+
+         }
+         onVariantChange(){
+
+            this.getSelectedOptions();
+                
+        }
+        getSelectedOptions(){
+         this.options = Array.from(this.querySelectorAll("select"), (select) => select.value);
+         console.log(this.options);
+         
+        }
+    }
+
+    customElements.define("variant-selector", VariantSelector);
+    
+</script>
 
 <script>
     const swiper = new Swiper('.swiper', {
