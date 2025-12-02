@@ -57,11 +57,14 @@
                     {% when 'price' %}
                         <div class="my-3">
                             {%  assign product_price = product.selected_or_first_available_variant %}
-                            <span class="text-gray-500 text-base line-through">{{ product_price.compare_at_price | money }}</span>
-                            <span class="text-lg text-gray-900">{{ product_price.price | money }}</span>
-                            {% if product_price.price < product_price.compare_at_price %}
-                                <span class="px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4">Sale</span>
-                            {% endif %}
+                            <span data-compare-price class="text-gray-500 text-base line-through">
+                                {{ product.selected_or_first_available_variant.compare_at_price | money }}
+                            </span>
+                            <span data-product-price class="text-lg text-gray-900">
+                                {{ product.selected_or_first_available_variant.price | money }}
+                            </span>
+                           <span data-sale-badge class="hidden px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4"> Sale</span>
+
                         </div>
                     {% when 'variant_selector' %}
 
@@ -150,7 +153,8 @@
 
             if(this.selectedVariant){
                 this.updateUrl();
-                this.updateForm();
+                this.updateFormID();
+                this.updatePrice();
             }
                 
         }
@@ -186,7 +190,7 @@
             window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.selectedVariant.id}`);
         }
 
-        updateForm(){
+        updateFormID(){
             const form = document.getElementById(`product-form`);
             if(form && this.selectedVariant){
                 const input = form.querySelector('input[name="id"]');
@@ -195,6 +199,37 @@
                 }
             }
         }
+
+        formatMoney(cents) {
+            const currency = "{{ shop.currency }}";
+            const amount = cents / 100;
+
+            return new Intl.NumberFormat(undefined, {
+                style: "currency",
+                currency: currency
+            }).format(amount);
+        }
+
+
+        updatePrice() {
+            if (!this.selectedVariant) return;
+
+            const priceElement = document.querySelector("[data-product-price]");
+            const compareElement = document.querySelector("[data-compare-price]");
+            const saleBadge = document.querySelector("[data-sale-badge]");
+
+            priceElement.textContent = this.formatMoney(this.selectedVariant.price);
+
+            if (this.selectedVariant.compare_at_price > this.selectedVariant.price) {
+                compareElement.textContent = this.formatMoney(this.selectedVariant.compare_at_price);
+                compareElement.style.display = "inline";
+                saleBadge.classList.remove("hidden");
+            } else {
+                compareElement.style.display = "none";
+                saleBadge.classList.add("hidden");
+            }
+        }
+
 
     }
 
