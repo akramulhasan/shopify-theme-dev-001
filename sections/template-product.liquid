@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="product--information sticky top-5 p-2">
-         {%  form 'product', product  %}
+         {%  form 'product', product, id: 'product-form', novalidate: 'novalidate'  %}
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
             {% for block in section.blocks %}
@@ -150,6 +150,7 @@
 
             if(this.selectedVariant){
                 this.updateUrl();
+                this.updateForm();
             }
                 
         }
@@ -183,6 +184,16 @@
         updateUrl(){
             if(!this.selectedVariant) return;
             window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.selectedVariant.id}`);
+        }
+
+        updateForm(){
+            const form = document.getElementById(`product-form`);
+            if(form && this.selectedVariant){
+                const input = form.querySelector('input[name="id"]');
+                if(input){
+                    input.value = this.selectedVariant.id;
+                }
+            }
         }
 
     }
