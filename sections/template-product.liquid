@@ -155,6 +155,7 @@
                 this.updateUrl();
                 this.updateFormID();
                 this.updatePrice();
+                this.updateButtonAvailability();
             }
                 
         }
@@ -227,6 +228,17 @@
             } else {
                 compareElement.style.display = "none";
                 saleBadge.classList.add("hidden");
+            }
+        }
+
+        updateButtonAvailability() {
+            const addButton = document.querySelector('button[name="add"]');
+            if (this.selectedVariant && this.selectedVariant.available) {
+                addButton.disabled = false;
+                addButton.textContent = "Add to basket";
+            } else {
+                addButton.disabled = true;
+                addButton.textContent = "Sold Out";
             }
         }
 
