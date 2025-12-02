@@ -147,6 +147,10 @@
 
             this.getSelectedOptions();
             this.getSelectedVariant();
+
+            if(this.selectedVariant){
+                this.updateUrl();
+            }
                 
         }
 
@@ -166,14 +170,19 @@
 
         getSelectedVariant(){
             const variants = this.getVariantJSON();
-            const selectedVariant = variants.find(variant => {
+            this.selectedVariant = variants.find(variant => {
                 return variant.options.every((option, index) => {
                     return option === this.options[index];
                 });
             });
 
-            console.log(selectedVariant);
+            console.log(this.selectedVariant);
         
+        }
+
+        updateUrl(){
+            if(!this.selectedVariant) return;
+            window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.selectedVariant.id}`);
         }
 
     }

@@ -19,5 +19,30 @@
     <main role="main">
       {{ content_for_layout }}
     </main>
+  <div id="demo">
+    
+  </div>
+    {% comment %} <script>
+
+      const selectedOptions = ['red', 'large'];
+      const productVariants = [
+        { id: 1, options: ['red', 'small'] },
+        { id: 2, options: ['red', 'large'] },
+        { id: 3, options: ['blue', 'small'] },
+        { id: 4, options: ['blue', 'large'] },
+      ];
+
+      function findMatchingVariant(selectedOptions, productVariants) {
+        return productVariants.find(variant =>
+          variant.options.every((option, index) => option === selectedOptions[index])
+        );
+      }
+
+      console.log(findMatchingVariant(selectedOptions, productVariants));
+      
+     
+      
+      
+    </script> {% endcomment %}
   </body>
 </html>
