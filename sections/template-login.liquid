@@ -1,1 +1,40 @@
-hello world
+<div class="max-w-6xl flex h-full items-center justify-center py-12 px-6 mx-auto md:px-4 lg:px-8">
+    <div class="mx-w-md w-full space-y-8">
+        <div>
+            <h1 class="text-center text-3xl font-bold mt-6">Sign in to your account</h1>
+        </div>
+        <div class="mt-8">
+            {% form 'customer_login' %}
+                {% if form.errors %}
+                    <div class="relative border border-red-400 bg-red-100 text-red-700 px-4-py-3" role="alert">
+                        <strong class="font-bold">There were some problems with your submission</strong>
+                        <ul class="mt-2 list-disc list-inside">
+                            {% for field in form.errors %}
+                                <li>{{ field | capitalize }} {{ form.errors[field] }}</li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+                {% endif %}
+                <div class="my-2">
+                    <label for="email_address" class="sr-only">Email address</label>
+                    <input type="email" name="customer[email]" id="email_address" autocomplete="email" placeholder="Email address" required class="w-full border border-gray-300 rounded-md p-2 mt-1" />
+                
+                </div>
+
+                {% if form.password_needed %}
+                <div class="my-2">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" name="customer[password]" id="password" autocomplete="current-password" placeholder="Password" required class="w-full border border-gray-300 rounded-md p-2 mt-1" />
+                
+                </div>
+                {% endif %}
+
+                <div>
+                    <button type="submit" class="relative w-full py-2 px-4 tex-sm font-medium text-white bg-gray-600 hover:bg-gray-900">Sign in</button>
+                </div>
+            {% endform %}
+        </div>
+    </div>
+    <div class="mx-w-md w-full space-y-8"></div>
+</div>
