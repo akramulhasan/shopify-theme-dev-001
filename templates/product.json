@@ -1,42 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "template": {
-            "type": "template-product",
-            "blocks": {
-                "vendor": {
-                    "type": "vendor"
-                },
-                "title": {
-                    "type": "title"
-                },
-                "price": {
-                    "type": "price"
-                },
-                "variant_selector": {
-                    "type": "variant_selector"
-                },
-                "quantity": {
-                    "type": "quantity"
-                },
-                "description": {
-                    "type": "description"
-                },
-                "add_to_cart": {
-                    "type": "add_to_cart"
-                }
-            },
-            "block_order": [
-                "vendor",
-                "title",
-                "price",
-                "variant_selector",
-                "quantity",
-                "description",
-                "add_to_cart"
-            ]
+  "sections": {
+    "template": {
+      "type": "template-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_selector": {
+          "type": "variant_selector",
+          "settings": {}
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "add_to_cart": {
+          "type": "add_to_cart",
+          "settings": {}
         }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_selector",
+        "quantity",
+        "description",
+        "add_to_cart"
+      ],
+      "settings": {}
     },
-    "order": [
-        "template"
-    ]
+    "17679654282c989ca2": {
+      "type": "apps",
+      "blocks": {
+        "barn2_bundles_bulk_discounts_barn2_bundles_app_block_qCtCKw": {
+          "type": "shopify://apps/barn2-bundles-bulk-discounts/blocks/barn2-bundles-app-block/9093802f-ebea-4e54-8d68-a9e2eaad7180",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "barn2_bundles_bulk_discounts_barn2_bundles_app_block_qCtCKw"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "template",
+    "17679654282c989ca2"
+  ]
 }
