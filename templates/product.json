@@ -54,20 +54,25 @@
     },
     "17679654282c989ca2": {
       "type": "apps",
+      "settings": {}
+    },
+    "1772427766b51d51eb": {
+      "type": "apps",
       "blocks": {
-        "barn2_bundles_bulk_discounts_barn2_bundles_app_block_qCtCKw": {
+        "barn2_bundles_bulk_discounts_barn2_bundles_app_block_Y6mqcB": {
           "type": "shopify://apps/barn2-bundles-bulk-discounts/blocks/barn2-bundles-app-block/9093802f-ebea-4e54-8d68-a9e2eaad7180",
           "settings": {}
         }
       },
       "block_order": [
-        "barn2_bundles_bulk_discounts_barn2_bundles_app_block_qCtCKw"
+        "barn2_bundles_bulk_discounts_barn2_bundles_app_block_Y6mqcB"
       ],
       "settings": {}
     }
   },
   "order": [
     "template",
-    "17679654282c989ca2"
+    "17679654282c989ca2",
+    "1772427766b51d51eb"
   ]
 }
